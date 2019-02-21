@@ -1,0 +1,11 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 30px; }
+  .header img {
+    height: 50px; }
+  .header .project-name {
+    font-weight: 600;
+    font-size: 35px;
+    margin-left: 35px; }

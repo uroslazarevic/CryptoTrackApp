@@ -1,0 +1,13 @@
+body {
+  margin: none;
+  background-color: azure; }
+  body ul {
+    margin: 0;
+    padding: 0;
+    list-style: none; }
+  body a {
+    color: #000;
+    text-decoration: none; }
+    body a:hover, body a:focus {
+      color: #000;
+      text-decoration: none; }
