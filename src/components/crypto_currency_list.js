@@ -29,6 +29,7 @@ export default class CryptoCurrencyList extends Component {
       const index = userCurrencies.findIndex(
         currency => currency.name == currencyName
       );
+      // console.log(/^([0-9]{1,9})$/.test(amount));
 
       if (index != -1) {
         userCurrencies[index].amount = amount;

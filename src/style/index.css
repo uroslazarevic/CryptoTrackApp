@@ -132,3 +132,17 @@ body {
         outline: none; }
   .pagination .break a {
     cursor: default; }
+
+.page-loader-bg {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background: rgba(221, 221, 221, 0.3);
+  z-index: 1; }
+  .page-loader-bg img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+    transform: translate(-50%, -50%);
+    height: 80px; }

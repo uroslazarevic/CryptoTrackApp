@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { cryptoCurrencyCap } from "./../api";
-import { Header, CryptoCurrencyList, Pagination } from "./index";
+import { Header, CryptoCurrencyList, Pagination, Loader } from "./index";
 
 const USER_KEY = "51764d66-844e-4bd9-922f-a12308d6793a";
 
@@ -8,7 +8,13 @@ export default class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { currencyList: [], start: 1, limit: 10, pageCount: 5 };
+    this.state = {
+      currencyList: [],
+      start: 1,
+      limit: 10,
+      pageCount: 5,
+      loader: true
+    };
   }
 
   onPageChange = ({ selected }) => {
@@ -31,11 +37,14 @@ export default class App extends Component {
   };
 
   componentWillMount() {
-    this.fetchCryptoCurrencies();
+    this.fetchCryptoCurrencies().then(() => this.setState({ loader: false }));
     setInterval(() => this.fetchCryptoCurrencies(), 60000);
   }
 
   render() {
+    if (this.state.loader) {
+      return <Loader />;
+    }
     return (
       <div className="crypto-track-app">
         <div className="container">

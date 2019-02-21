@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 export default class CryptoCurrencyItem extends Component {
   constructor(props) {
@@ -90,7 +91,7 @@ export default class CryptoCurrencyItem extends Component {
           <div className="title">Amount you own</div>
           <input
             onChange={this.handleInputValue}
-            type="number"
+            type="text"
             name={symbol}
             defaultValue={defaultValue}
           />
