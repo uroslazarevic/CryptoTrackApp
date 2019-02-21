@@ -1,11 +1,14 @@
-## Installation
+###Quantox FED Test
+Test project for Front End Position in Quantox company
+
+###Installation
 
 ```bash
-git clone https://github.com/uroslazarevic/React-sass-app.git
-cd React-sass-app
+git clone https://github.com/uroslazarevic/CryptoTrackApp.git
+cd /CryptoTrackApp
 ```
 
-## Get started
+### Get started
 
 ```bash
 npm install

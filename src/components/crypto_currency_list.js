@@ -26,9 +26,13 @@ export default class CryptoCurrencyList extends Component {
 
   renderContent() {
     const { currencyList } = this.state;
-    return currencyList.map(currItem => {
-      return <CryptoCurrencyItem key={currItem.name} currItem={currItem} />;
-    });
+    return currencyList.length > 0 ? (
+      currencyList.map(currItem => {
+        return <CryptoCurrencyItem key={currItem.name} currItem={currItem} />;
+      })
+    ) : (
+      <div>List</div>
+    );
   }
 
   componentWillMount() {
