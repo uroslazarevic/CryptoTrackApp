@@ -9,7 +9,39 @@ export default class CryptoCurrencyList extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { currencyList: [] };
+    this.state = { currencyList: [], userCurrencies: [] };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  getUserCurrencies() {
+    let userCurrencies;
+    if (localStorage.getItem("userCurrencies") === null) {
+      userCurrencies = [];
+    } else {
+      userCurrencies = JSON.parse(localStorage.getItem("userCurrencies"));
+    }
+    return userCurrencies;
+  }
+
+  handleSubmit(amount) {
+    return e => {
+      e.preventDefault();
+      const currencyName = e.target.dataset.currencyName;
+      const userCurrencies = this.getUserCurrencies();
+      const index = userCurrencies.findIndex(
+        currency => currency.name == currencyName
+      );
+
+      if (index != -1) {
+        userCurrencies[index].amount = amount;
+      } else {
+        userCurrencies.push({ name: currencyName, amount });
+      }
+
+      this.setState({ userCurrencies });
+      localStorage.setItem("userCurrencies", JSON.stringify(userCurrencies));
+    };
   }
 
   fetchCryptoCurrencies = async () => {
@@ -19,16 +51,21 @@ export default class CryptoCurrencyList extends Component {
         limit: 50
       }
     });
-    this.setState({ currencyList: response.data.data }, () =>
-      console.log(this.state.currencyList)
-    );
+    this.setState({ currencyList: response.data.data });
   };
 
   renderContent() {
-    const { currencyList } = this.state;
+    const { currencyList, userCurrencies } = this.state;
     return currencyList.length > 0 ? (
       currencyList.map(currItem => {
-        return <CryptoCurrencyItem key={currItem.name} currItem={currItem} />;
+        return (
+          <CryptoCurrencyItem
+            handleSubmit={this.handleSubmit}
+            key={currItem.name}
+            currItem={currItem}
+            userCurrencies={userCurrencies}
+          />
+        );
       })
     ) : (
       <div>List</div>
@@ -36,7 +73,10 @@ export default class CryptoCurrencyList extends Component {
   }
 
   componentWillMount() {
+    const userCurrencies = this.getUserCurrencies();
+    this.setState({ userCurrencies });
     this.fetchCryptoCurrencies();
+    setInterval(() => this.fetchCryptoCurrencies(), 60000);
   }
 
   render() {

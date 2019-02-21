@@ -11,6 +11,10 @@
   &:nth-child(even) {
     background-color: gray;
     color: #fff;
+
+    input {
+      color: #000;
+    }
   }
 
   &:nth-child(odd) {
@@ -48,6 +52,7 @@
       }
 
       button {
+        cursor: pointer;
         border-radius: 4px;
         background-color: bisque;
         color: brown;
@@ -56,6 +61,21 @@
         height: 20px;
         font-size: 14px;
         line-height: 20px;
+
+        &:hover {
+          background-color: #ffce93;
+        }
+      }
+
+      .disabled {
+        cursor: initial;
+        background-color: #ccc;
+        color: #fff;
+
+        &:hover {
+          background-color: #ccc;
+          color: #fff;
+        }
       }
     }
   }

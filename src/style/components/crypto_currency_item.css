@@ -10,6 +10,8 @@
   .crypto-currency-item:nth-child(even) {
     background-color: gray;
     color: #fff; }
+    .crypto-currency-item:nth-child(even) input {
+      color: #000; }
   .crypto-currency-item:nth-child(odd) {
     background-color: #fff; }
   .crypto-currency-item .block {
@@ -35,6 +37,7 @@
       margin-bottom: 3px;
       width: 100%; }
     .crypto-currency-item .block.account button {
+      cursor: pointer;
       border-radius: 4px;
       background-color: bisque;
       color: brown;
@@ -43,3 +46,12 @@
       height: 20px;
       font-size: 14px;
       line-height: 20px; }
+      .crypto-currency-item .block.account button:hover {
+        background-color: #ffce93; }
+    .crypto-currency-item .block.account .disabled {
+      cursor: initial;
+      background-color: #ccc;
+      color: #fff; }
+      .crypto-currency-item .block.account .disabled:hover {
+        background-color: #ccc;
+        color: #fff; }
