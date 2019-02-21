@@ -1,15 +1,12 @@
 import React, { Component } from "react";
-import { cryptoCurrencyCap } from "./../api";
 
 import { CryptoCurrencyItem } from "components";
-
-const USER_KEY = "51764d66-844e-4bd9-922f-a12308d6793a";
 
 export default class CryptoCurrencyList extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { currencyList: [], userCurrencies: [] };
+    this.state = { userCurrencies: [] };
 
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -44,24 +41,16 @@ export default class CryptoCurrencyList extends Component {
     };
   }
 
-  fetchCryptoCurrencies = async () => {
-    const response = await cryptoCurrencyCap.get("listings/latest", {
-      params: {
-        CMC_PRO_API_KEY: USER_KEY,
-        limit: 50
-      }
-    });
-    this.setState({ currencyList: response.data.data });
-  };
-
   renderContent() {
-    const { currencyList, userCurrencies } = this.state;
+    const { currencyList } = this.props;
+    const { userCurrencies } = this.state;
+
     return currencyList.length > 0 ? (
       currencyList.map(currItem => {
         return (
           <CryptoCurrencyItem
-            handleSubmit={this.handleSubmit}
             key={currItem.name}
+            handleSubmit={this.handleSubmit}
             currItem={currItem}
             userCurrencies={userCurrencies}
           />
@@ -75,8 +64,6 @@ export default class CryptoCurrencyList extends Component {
   componentWillMount() {
     const userCurrencies = this.getUserCurrencies();
     this.setState({ userCurrencies });
-    this.fetchCryptoCurrencies();
-    setInterval(() => this.fetchCryptoCurrencies(), 60000);
   }
 
   render() {

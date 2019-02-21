@@ -47,7 +47,10 @@ body {
   .crypto-currency-item:nth-child(odd) {
     background-color: #fff; }
   .crypto-currency-item .block {
-    margin-right: 10px; }
+    margin-right: 10px;
+    flex: 1; }
+    .crypto-currency-item .block.account-value {
+      flex: 0 0 210px; }
     .crypto-currency-item .block .title {
       font-weight: 600;
       font-size: 18px;
@@ -60,30 +63,72 @@ body {
       font-weight: 550;
       line-height: 14px;
       text-align: center; }
-    .crypto-currency-item .block.account input {
-      height: 20px;
-      line-height: 20px;
-      padding: 0 10px;
-      border-radius: 4px;
-      border: 1px solid #ccc;
-      margin-bottom: 3px;
-      width: 100%; }
-    .crypto-currency-item .block.account button {
-      cursor: pointer;
-      border-radius: 4px;
-      background-color: bisque;
-      color: brown;
-      border: none;
-      width: 100%;
-      height: 20px;
-      font-size: 14px;
-      line-height: 20px; }
-      .crypto-currency-item .block.account button:hover {
-        background-color: #ffce93; }
-    .crypto-currency-item .block.account .disabled {
-      cursor: initial;
-      background-color: #ccc;
-      color: #fff; }
-      .crypto-currency-item .block.account .disabled:hover {
+    .crypto-currency-item .block.account {
+      flex: 0 0 210px; }
+      .crypto-currency-item .block.account input {
+        height: 20px;
+        line-height: 20px;
+        padding: 0 10px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        margin-bottom: 3px;
+        width: 100%; }
+      .crypto-currency-item .block.account button {
+        cursor: pointer;
+        border-radius: 4px;
+        background-color: bisque;
+        color: brown;
+        border: none;
+        width: 100%;
+        height: 20px;
+        font-size: 14px;
+        line-height: 20px; }
+        .crypto-currency-item .block.account button:hover {
+          background-color: #ffce93; }
+      .crypto-currency-item .block.account .disabled {
+        cursor: initial;
         background-color: #ccc;
         color: #fff; }
+        .crypto-currency-item .block.account .disabled:hover {
+          background-color: #ccc;
+          color: #fff; }
+
+.pagination {
+  text-align: center !important;
+  display: block !important;
+  padding-left: 15px;
+  padding-right: 15px;
+  width: 900px;
+  height: 98px;
+  line-height: 98px;
+  margin: 0 auto;
+  text-align: right;
+  margin-bottom: 15px; }
+  .pagination li {
+    display: inline-block;
+    border: 1px solid #ba1e2b;
+    border-radius: 3px;
+    font-weight: bold;
+    transition: all 0.2s ease-in-out;
+    font-size: 14px;
+    margin-left: 5px;
+    line-height: initial;
+    background: #ba1e2b; }
+    .pagination li:hover {
+      background: #fc871a;
+      border-color: #fc871a;
+      opacity: 0.8; }
+    .pagination li.active {
+      background: #fc871a;
+      border-color: #fc871a; }
+    .pagination li.break-me {
+      pointer-events: none;
+      cursor: pointer; }
+    .pagination li a {
+      color: #fff;
+      display: block;
+      padding: 10px 13px !important; }
+      .pagination li a:focus {
+        outline: none; }
+  .pagination .break a {
+    cursor: default; }

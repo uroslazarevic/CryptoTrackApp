@@ -23,6 +23,13 @@
 
   .block {
     margin-right: 10px;
+    flex: 1;
+
+    $flexWidth: 60px;
+
+    &.account-value {
+      flex: 0 0 210px;
+    }
 
     .title {
       font-weight: 600;
@@ -41,6 +48,8 @@
     }
 
     &.account {
+      flex: 0 0 210px;
+
       input {
         height: 20px;
         line-height: 20px;

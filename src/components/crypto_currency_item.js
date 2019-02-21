@@ -4,23 +4,29 @@ export default class CryptoCurrencyItem extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { inputValue: 0 };
+    this.state = { inputValue: 0, defaultValue: 0 };
   }
 
   handleUsersCurrValue() {
     const { currItem, userCurrencies } = this.props;
-    let usersCurrAmount;
-    userCurrencies.forEach(userCurr => {
-      if (userCurr.name === currItem.slug) {
-        usersCurrAmount = userCurr.amount;
-      }
-    });
-    const userCurrencyValue = usersCurrAmount * currItem.quote.USD.price;
 
-    return {
-      amount: usersCurrAmount,
-      value: `$ ${userCurrencyValue.toLocaleString()}`
-    };
+    const crypto = userCurrencies.find(
+      userCurr => userCurr.name === currItem.slug
+    );
+    if (crypto) {
+      const userCurrencyValue =
+        parseInt(crypto.amount) * currItem.quote.USD.price;
+
+      return {
+        amount: crypto.amount,
+        value: `$ ${userCurrencyValue.toLocaleString()}`
+      };
+    } else {
+      return {
+        amount: 0,
+        value: `$ 0`
+      };
+    }
   }
 
   handleInputValue = e => {
@@ -32,12 +38,13 @@ export default class CryptoCurrencyItem extends Component {
   };
 
   componentWillMount() {
-    this.setState({ inputValue: this.handleUsersCurrValue().amount });
+    const value = this.handleUsersCurrValue().amount;
+    this.setState({ defaultValue: value });
   }
 
   render() {
     const { currItem, handleSubmit } = this.props;
-    const { inputValue } = this.state;
+    const { inputValue, defaultValue } = this.state;
     const {
       name,
       symbol,
@@ -83,9 +90,9 @@ export default class CryptoCurrencyItem extends Component {
           <div className="title">Amount you own</div>
           <input
             onChange={this.handleInputValue}
-            value={inputValue}
             type="number"
             name={symbol}
+            defaultValue={defaultValue}
           />
           <button
             className={this.disableInput() ? "disabled" : ""}
@@ -97,11 +104,7 @@ export default class CryptoCurrencyItem extends Component {
 
         <div className="block account-value">
           <div className="title">$ Value of your coin</div>
-          <div className="value">
-            {this.handleUsersCurrValue().value
-              ? this.handleUsersCurrValue().value
-              : "$ 0"}
-          </div>
+          <div className="value">{this.handleUsersCurrValue().value}</div>
         </div>
       </li>
     );
