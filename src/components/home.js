@@ -20,7 +20,6 @@ export default class App extends Component {
 
   onPageChange = ({ selected }) => {
     const page = selected;
-    console.log(this.state.limit);
     this.setState({ start: (page + 1) * this.state.limit }, () => {
       this.fetchCryptoCurrencies();
     });

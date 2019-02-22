@@ -45,11 +45,9 @@ export default class CryptoCurrencyItem extends Component {
       this.setState({ error: null });
 
       if (/^([0-9]{1,9})$/.test(inputValue)) {
-        console.log("da");
         this.props.handleSubmit(inputValue, e);
       } else {
         this.setState({ error: `error-${e.target.dataset.currencyName}` });
-        console.log("ne");
       }
     };
   };

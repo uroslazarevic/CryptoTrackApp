@@ -49,8 +49,6 @@ export default class CryptoCurrencyDetails extends Component {
       urls: { reddit, source_code, website, message_board }
     } = this.state.details[this.state.id];
 
-    console.log(this.state.details[1]);
-
     return (
       <div className="crypto-currency-details">
         <Link className="back" to="/">
