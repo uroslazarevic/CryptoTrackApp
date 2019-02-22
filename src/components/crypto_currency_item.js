@@ -16,7 +16,7 @@ export default class CryptoCurrencyItem extends Component {
     );
     if (crypto) {
       const userCurrencyValue =
-        parseInt(crypto.amount) * currItem.quote.USD.price;
+        parseInt(crypto.amount, 10) * currItem.quote.USD.price;
 
       return {
         amount: crypto.amount,
@@ -25,7 +25,7 @@ export default class CryptoCurrencyItem extends Component {
     } else {
       return {
         amount: 0,
-        value: `$ 0`
+        value: "$ 0"
       };
     }
   }
@@ -47,6 +47,7 @@ export default class CryptoCurrencyItem extends Component {
     const { currItem, handleSubmit } = this.props;
     const { inputValue, defaultValue } = this.state;
     const {
+      id,
       name,
       symbol,
       slug,
@@ -61,6 +62,17 @@ export default class CryptoCurrencyItem extends Component {
 
     return (
       <li className="crypto-currency-item">
+        <Link
+          className="collection-restaurant-item"
+          to={{
+            pathname: `/crypto-currency/${slug}`,
+            state: {
+              id
+            }
+          }}
+        >
+          More
+        </Link>
         <div className="block name">
           <div className="title">Name</div>
           <div className="value">{name}</div>

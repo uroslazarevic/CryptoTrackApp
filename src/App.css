@@ -1,6 +1,7 @@
 body {
   margin: none;
-  background-color: azure; }
+  background-color: azure;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif; }
   body ul {
     margin: 0;
     padding: 0;
@@ -36,9 +37,12 @@ body {
   justify-content: space-evenly;
   align-items: center;
   border: 1px solid darkgray;
-  padding: 5px;
+  padding: 20px;
   border-radius: 4px;
-  margin-bottom: 10px; }
+  margin-bottom: 20px;
+  position: relative; }
+  .crypto-currency-item:last-child {
+    margin-bottom: 0px; }
   .crypto-currency-item:nth-child(even) {
     background-color: gray;
     color: #fff; }
@@ -46,6 +50,20 @@ body {
       color: #000; }
   .crypto-currency-item:nth-child(odd) {
     background-color: #fff; }
+  .crypto-currency-item a {
+    position: absolute;
+    z-index: 1;
+    left: 7px;
+    top: 5px;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: antiquewhite;
+    padding: 2px 13px;
+    color: darkgoldenrod;
+    font-weight: 500; }
+    .crypto-currency-item a:hover {
+      color: #fff;
+      background-color: #ffd093; }
   .crypto-currency-item .block {
     margin-right: 10px;
     flex: 1; }
@@ -138,7 +156,7 @@ body {
   width: 100%;
   position: absolute;
   background: rgba(221, 221, 221, 0.3);
-  z-index: 1; }
+  z-index: 99; }
   .page-loader-bg img {
     position: absolute;
     top: 50%;
@@ -146,3 +164,55 @@ body {
     z-index: 1;
     transform: translate(-50%, -50%);
     height: 80px; }
+
+.crypto-currency-details {
+  margin: 0 20px 20px 20px;
+  padding: 20px 20px 20px 20px;
+  border-radius: 4px;
+  border: 1px solid antiquewhite;
+  background-color: aliceblue;
+  height: 100%; }
+  .crypto-currency-details h3 {
+    position: relative;
+    text-align: center;
+    margin-bottom: 25px; }
+    .crypto-currency-details h3 .back {
+      position: absolute;
+      line-height: 21px;
+      z-index: 1;
+      left: 7px;
+      top: 5px;
+      border-radius: 4px;
+      font-size: 14px;
+      background-color: antiquewhite;
+      padding: 2px 15px;
+      color: darkgoldenrod; }
+      .crypto-currency-details h3 .back:hover {
+        color: #fff;
+        background-color: #ffd093; }
+  .crypto-currency-details .basic-info {
+    display: flex;
+    justify-content: center;
+    padding: 10px; }
+    .crypto-currency-details .basic-info img {
+      height: 50px; }
+    .crypto-currency-details .basic-info .name {
+      font-size: 35px;
+      padding-left: 20px;
+      padding-right: 5px; }
+    .crypto-currency-details .basic-info small {
+      color: burlywood;
+      line-height: 40px;
+      align-self: flex-end; }
+  .crypto-currency-details .additional-info {
+    display: flex;
+    margin-top: 30px; }
+    .crypto-currency-details .additional-info .info {
+      font-size: 14px;
+      flex: 1;
+      text-align: center; }
+      .crypto-currency-details .additional-info .info span {
+        font-size: 15px;
+        font-weight: 600;
+        padding-bottom: 10px;
+        display: inline-block; }

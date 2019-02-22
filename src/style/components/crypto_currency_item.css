@@ -4,9 +4,12 @@
   justify-content: space-evenly;
   align-items: center;
   border: 1px solid darkgray;
-  padding: 5px;
+  padding: 20px;
   border-radius: 4px;
-  margin-bottom: 10px; }
+  margin-bottom: 20px;
+  position: relative; }
+  .crypto-currency-item:last-child {
+    margin-bottom: 0px; }
   .crypto-currency-item:nth-child(even) {
     background-color: gray;
     color: #fff; }
@@ -14,6 +17,20 @@
       color: #000; }
   .crypto-currency-item:nth-child(odd) {
     background-color: #fff; }
+  .crypto-currency-item a {
+    position: absolute;
+    z-index: 1;
+    left: 7px;
+    top: 5px;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: antiquewhite;
+    padding: 2px 13px;
+    color: darkgoldenrod;
+    font-weight: 500; }
+    .crypto-currency-item a:hover {
+      color: #fff;
+      background-color: #ffd093; }
   .crypto-currency-item .block {
     margin-right: 10px;
     flex: 1; }
