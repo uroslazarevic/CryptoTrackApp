@@ -1,32 +1,31 @@
 .crypto-currency-details {
-  margin: 0 20px 20px 20px;
-  padding: 20px 20px 20px 20px;
+  margin: 20px;
+  padding: 20px;
   border-radius: 4px;
   border: 1px solid antiquewhite;
   background-color: aliceblue;
-  height: 100%; }
-  .crypto-currency-details h3 {
-    position: relative;
-    text-align: center;
-    margin-bottom: 25px; }
-    .crypto-currency-details h3 .back {
-      position: absolute;
-      line-height: 21px;
-      z-index: 1;
-      left: 7px;
-      top: 5px;
-      border-radius: 4px;
-      font-size: 14px;
-      background-color: antiquewhite;
-      padding: 2px 15px;
-      color: darkgoldenrod; }
-      .crypto-currency-details h3 .back:hover {
-        color: #fff;
-        background-color: #ffd093; }
+  height: 100%;
+  position: relative; }
+  .crypto-currency-details .back {
+    position: absolute;
+    line-height: 21px;
+    z-index: 1;
+    left: 5px;
+    top: 5px;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: antiquewhite;
+    padding: 2px 15px;
+    color: darkgoldenrod;
+    font-weight: 500; }
+    .crypto-currency-details .back:hover {
+      color: #fff;
+      background-color: #ffd093; }
   .crypto-currency-details .basic-info {
     display: flex;
     justify-content: center;
-    padding: 10px; }
+    padding: 10px;
+    cursor: initial; }
     .crypto-currency-details .basic-info img {
       height: 50px; }
     .crypto-currency-details .basic-info .name {

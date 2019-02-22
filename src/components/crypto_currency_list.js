@@ -21,25 +21,21 @@ export default class CryptoCurrencyList extends Component {
     return userCurrencies;
   }
 
-  handleSubmit(amount) {
-    return e => {
-      e.preventDefault();
-      const currencyName = e.target.dataset.currencyName;
-      const userCurrencies = this.getUserCurrencies();
-      const index = userCurrencies.findIndex(
-        currency => currency.name == currencyName
-      );
-      // console.log(/^([0-9]{1,9})$/.test(amount));
+  handleSubmit(amount, e) {
+    const currencyName = e.target.dataset.currencyName;
+    const userCurrencies = this.getUserCurrencies();
+    const index = userCurrencies.findIndex(
+      currency => currency.name == currencyName
+    );
 
-      if (index != -1) {
-        userCurrencies[index].amount = amount;
-      } else {
-        userCurrencies.push({ name: currencyName, amount });
-      }
+    if (index != -1) {
+      userCurrencies[index].amount = amount;
+    } else {
+      userCurrencies.push({ name: currencyName, amount });
+    }
 
-      this.setState({ userCurrencies });
-      localStorage.setItem("userCurrencies", JSON.stringify(userCurrencies));
-    };
+    this.setState({ userCurrencies });
+    localStorage.setItem("userCurrencies", JSON.stringify(userCurrencies));
   }
 
   renderContent() {

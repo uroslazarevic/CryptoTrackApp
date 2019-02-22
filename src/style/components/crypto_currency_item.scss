@@ -70,6 +70,18 @@
 
     &.account {
       flex: 0 0 210px;
+      position: relative;
+
+      .error {
+        position: absolute;
+        font-size: 14px;
+        left: 0;
+        color: red;
+        right: 0;
+        text-align: center;
+        margin: 0px;
+        bottom: -20px;
+      }
 
       input {
         height: 20px;
@@ -79,9 +91,11 @@
         border: 1px solid #ccc;
         margin-bottom: 3px;
         width: 100%;
+        outline: none;
       }
 
       button {
+        outline: none;
         cursor: pointer;
         border-radius: 4px;
         background-color: bisque;

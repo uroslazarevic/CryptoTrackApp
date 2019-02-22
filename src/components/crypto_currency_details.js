@@ -28,7 +28,7 @@ export default class CryptoCurrencyDetails extends Component {
       this.setState({ loader: false, id })
     );
     const refreshInterval = setInterval(
-      () => this.fetchCryptoCurrencies(),
+      () => this.fetchCryptoCurrency(id),
       60000
     );
     this.setState({ refreshInterval });
@@ -53,12 +53,9 @@ export default class CryptoCurrencyDetails extends Component {
 
     return (
       <div className="crypto-currency-details">
-        <h3>
-          <Link className="back" to="/">
-            Back
-          </Link>
-          Category: {category} - {tags[0]}
-        </h3>
+        <Link className="back" to="/">
+          Back
+        </Link>
         <div className="basic-info">
           <img src={logo} alt="logo" />
           <div className="name">{name}</div>
@@ -73,22 +70,30 @@ export default class CryptoCurrencyDetails extends Component {
           <div className="info">
             <span>Reddit:</span>
             <br />
-            {reddit[0]}
+            <a href={reddit[0]} target="_blank">
+              {reddit[0]}
+            </a>
           </div>
           <div className="info">
             <span>Source code:</span>
             <br />
-            {source_code[0]}
+            <a href={source_code[0]} target="_blank">
+              {source_code[0]}
+            </a>
           </div>
           <div className="info">
             <span>Website:</span>
             <br />
-            {website[0]}
+            <a href={website[0]} target="_blank">
+              {website[0]}
+            </a>
           </div>
           <div className="info">
             <span>Message board:</span>
             <br />
-            {message_board[0]}
+            <a href={message_board[0]} target="_blank">
+              {message_board[0]}
+            </a>
           </div>
         </div>
       </div>

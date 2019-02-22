@@ -24,7 +24,7 @@ export default class CryptoCurrencyItem extends Component {
       };
     } else {
       return {
-        amount: 0,
+        amount: "",
         value: "$ 0"
       };
     }
@@ -34,17 +34,35 @@ export default class CryptoCurrencyItem extends Component {
     this.setState({ inputValue: e.target.value });
   };
 
-  disableInput = () => {
-    return this.state.inputValue < 0 ? true : false;
+  disableBtn = () => {
+    const { inputValue } = this.state;
+    return inputValue <= 0 || inputValue === "" ? true : false;
+  };
+
+  submitHelper = inputValue => {
+    return e => {
+      e.preventDefault();
+      this.setState({ error: null });
+
+      if (/^([0-9]{1,9})$/.test(inputValue)) {
+        console.log("da");
+        this.props.handleSubmit(inputValue, e);
+      } else {
+        this.setState({ error: `error-${e.target.dataset.currencyName}` });
+        console.log("ne");
+      }
+    };
   };
 
   componentWillMount() {
-    const value = this.handleUsersCurrValue().amount;
+    const value = this.handleUsersCurrValue().amount
+      ? this.handleUsersCurrValue().amount
+      : 0;
     this.setState({ defaultValue: value });
   }
 
   render() {
-    const { currItem, handleSubmit } = this.props;
+    const { currItem } = this.props;
     const { inputValue, defaultValue } = this.state;
     const {
       id,
@@ -97,22 +115,28 @@ export default class CryptoCurrencyItem extends Component {
 
         <form
           data-currency-name={slug}
-          onSubmit={handleSubmit(inputValue)}
+          onSubmit={this.submitHelper(inputValue)}
           className="block account"
         >
           <div className="title">Amount you own</div>
           <input
+            autoComplete="off"
+            onFocus={() => this.setState({ error: null })}
             onChange={this.handleInputValue}
             type="text"
             name={symbol}
             defaultValue={defaultValue}
           />
           <button
-            className={this.disableInput() ? "disabled" : ""}
-            disabled={this.disableInput()}
+            ref={this.button}
+            className={this.disableBtn() ? "disabled" : ""}
+            disabled={this.disableBtn()}
           >
             Submit
           </button>
+          {this.state.error == `error-${slug}` && (
+            <p className="error">Must be a number</p>
+          )}
         </form>
 
         <div className="block account-value">

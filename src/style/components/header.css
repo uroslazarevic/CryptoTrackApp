@@ -1,8 +1,8 @@
 .header {
+  padding: 20px 30px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 20px 30px; }
+  justify-content: center; }
   .header img {
     height: 50px; }
   .header .project-name {

@@ -14,10 +14,10 @@ body {
       text-decoration: none; }
 
 .header {
+  padding: 20px 30px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 20px 30px; }
+  justify-content: center; }
   .header img {
     height: 50px; }
   .header .project-name {
@@ -82,7 +82,17 @@ body {
       line-height: 14px;
       text-align: center; }
     .crypto-currency-item .block.account {
-      flex: 0 0 210px; }
+      flex: 0 0 210px;
+      position: relative; }
+      .crypto-currency-item .block.account .error {
+        position: absolute;
+        font-size: 14px;
+        left: 0;
+        color: red;
+        right: 0;
+        text-align: center;
+        margin: 0px;
+        bottom: -20px; }
       .crypto-currency-item .block.account input {
         height: 20px;
         line-height: 20px;
@@ -90,8 +100,10 @@ body {
         border-radius: 4px;
         border: 1px solid #ccc;
         margin-bottom: 3px;
-        width: 100%; }
+        width: 100%;
+        outline: none; }
       .crypto-currency-item .block.account button {
+        outline: none;
         cursor: pointer;
         border-radius: 4px;
         background-color: bisque;
@@ -166,34 +178,33 @@ body {
     height: 80px; }
 
 .crypto-currency-details {
-  margin: 0 20px 20px 20px;
-  padding: 20px 20px 20px 20px;
+  margin: 20px;
+  padding: 20px;
   border-radius: 4px;
   border: 1px solid antiquewhite;
   background-color: aliceblue;
-  height: 100%; }
-  .crypto-currency-details h3 {
-    position: relative;
-    text-align: center;
-    margin-bottom: 25px; }
-    .crypto-currency-details h3 .back {
-      position: absolute;
-      line-height: 21px;
-      z-index: 1;
-      left: 7px;
-      top: 5px;
-      border-radius: 4px;
-      font-size: 14px;
-      background-color: antiquewhite;
-      padding: 2px 15px;
-      color: darkgoldenrod; }
-      .crypto-currency-details h3 .back:hover {
-        color: #fff;
-        background-color: #ffd093; }
+  height: 100%;
+  position: relative; }
+  .crypto-currency-details .back {
+    position: absolute;
+    line-height: 21px;
+    z-index: 1;
+    left: 5px;
+    top: 5px;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: antiquewhite;
+    padding: 2px 15px;
+    color: darkgoldenrod;
+    font-weight: 500; }
+    .crypto-currency-details .back:hover {
+      color: #fff;
+      background-color: #ffd093; }
   .crypto-currency-details .basic-info {
     display: flex;
     justify-content: center;
-    padding: 10px; }
+    padding: 10px;
+    cursor: initial; }
     .crypto-currency-details .basic-info img {
       height: 50px; }
     .crypto-currency-details .basic-info .name {
